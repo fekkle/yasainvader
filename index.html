@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>やさいんべーだー - Space Invaders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-wrapper">
+    <header class="game-header">
+      <h1 class="title">やさいんべーだー</h1>
+      <div class="hud">
+        <div class="hud-item">SCORE: <span id="score-val">0</span></div>
+        <div class="hud-item">HIGH: <span id="high-score-val">0</span></div>
+        <div class="hud-item">WAVE: <span id="wave-val">1</span></div>
+        <div class="hud-item lives-container">
+          LIVES: <span id="lives-val"></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="800" height="600"></canvas>
+      
+      <!-- Overlay Screen for Game Over / Victory / Pause / Initial prompt -->
+      <div id="overlay-screen" class="overlay">
+        <div class="overlay-content">
+          <h2 id="overlay-title">PRESS OR CLICK TO START</h2>
+          <p id="overlay-subtitle"></p>
+          <button id="start-btn" class="btn">ゲームスタート</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Touch Controls -->
+    <div class="mobile-controls">
+      <div class="joystick-zone" id="joystick-zone">
+        <div class="joystick-base" id="joystick-base">
+          <div class="joystick-stick" id="joystick-stick"></div>
+        </div>
+      </div>
+      <div class="fire-zone">
+        <button id="btn-fire" class="touch-btn fire-btn round-btn">FIRE</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/audio.js"></script>
+  <script src="js/entities.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

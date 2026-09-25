@@ -1,0 +1,294 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: #05050a;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(15, 20, 35, 0.8) 0%, rgba(5, 5, 10, 1) 100%),
+    linear-gradient(to bottom, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 20px;
+  color: #ffffff;
+  font-family: 'Orbitron', 'Press Start 2P', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 860px;
+  padding: 10px;
+}
+
+.game-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.8rem;
+  color: #00ff66;
+  text-shadow: 0 0 10px rgba(0, 255, 102, 0.7), 0 0 20px rgba(0, 255, 102, 0.4);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 20, 30, 0.75);
+  border: 2px solid rgba(0, 255, 102, 0.4);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hud-item {
+  color: #00e5ff;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+}
+
+.hud-item span {
+  color: #ffffff;
+}
+
+.speed-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 8px 18px;
+  background: rgba(15, 20, 30, 0.75);
+  border: 2px solid rgba(0, 255, 102, 0.4);
+  border-radius: 8px;
+}
+
+.slider-label {
+  font-size: 0.85rem;
+  color: #00e5ff;
+  font-weight: 700;
+  white-space: nowrap;
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+}
+
+.slider-label span {
+  color: #ffffff;
+}
+
+#speed-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: rgba(0, 255, 102, 0.25);
+  border-radius: 3px;
+  outline: none;
+}
+
+#speed-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00ff66;
+  cursor: pointer;
+  box-shadow: 0 0 8px #00ff66;
+}
+
+#speed-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00ff66;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px #00ff66;
+}
+
+
+
+.lives-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.life-icon {
+  display: inline-block;
+  width: 16px;
+  height: 12px;
+  background-color: #00ff66;
+  border-radius: 2px;
+  box-shadow: 0 0 6px #00ff66;
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 4 / 3;
+  border: 3px solid #00ff66;
+  border-radius: 6px;
+  box-shadow: 0 0 25px rgba(0, 255, 102, 0.3), inset 0 0 15px rgba(0, 255, 102, 0.1);
+  overflow: hidden;
+  background-color: #000000;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 5, 12, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay-content {
+  text-align: center;
+  padding: 20px;
+  max-width: 80%;
+}
+
+.overlay-content h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.4rem;
+  color: #00ff66;
+  text-shadow: 0 0 12px #00ff66;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.overlay-content p {
+  font-size: 0.9rem;
+  color: #a0a5cc;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #00ff66 0%, #00b347 100%);
+  color: #05050a;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 102, 0.9);
+}
+
+.mobile-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 15px;
+  padding: 0 20px;
+}
+
+.joystick-zone {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  touch-action: none;
+}
+
+.joystick-base {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(20, 25, 40, 0.8);
+  border: 2px solid #00ff66;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.joystick-stick {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #00ff66;
+  position: absolute;
+  box-shadow: 0 0 10px #00ff66;
+  pointer-events: none;
+  transition: transform 0.05s linear;
+}
+
+.fire-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+
+.round-btn {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  background: rgba(255, 51, 85, 0.2);
+  color: #ff3355;
+  border: 2px solid #ff3355;
+  touch-action: manipulation;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 51, 85, 0.4);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.round-btn:active {
+  background: #ff3355;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(255, 51, 85, 0.8);
+}
+
